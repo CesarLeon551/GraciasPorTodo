@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Para el Amor de mi Vida ✨</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display, Montserrat & Great Vibes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: {
+                            800: '#5c0d1e',
+                            900: '#3d0713',
+                            950: '#22030a',
+                        },
+                        warmGold: '#d4af37',
+                        roseGold: '#e0a96d',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        cursive: ['Great Vibes', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Global Background */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #160207 0%, #340715 50%, #100105 100%);
+            color: #fcf8f2;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Gold Gradient Typography */
+        .gold-text {
+            background: linear-gradient(135deg, #fff7dc 0%, #d4af37 50%, #e8aa38 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(35, 4, 14, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.22);
+        }
+
+        /* Golden Resplendent Glow Box */
+        @keyframes venueGlowPulse {
+            0%, 100% {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.35), inset 0 0 15px rgba(212, 175, 55, 0.15);
+                border-color: rgba(212, 175, 55, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 55px rgba(212, 175, 55, 0.65), inset 0 0 30px rgba(212, 175, 55, 0.35);
+                border-color: rgba(255, 230, 140, 0.95);
+            }
+        }
+
+        .venue-glow-box {
+            animation: venueGlowPulse 3.5s infinite ease-in-out;
+        }
+
+        /* Interactive 3D Envelope */
+        .envelope-container {
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 310px;
+            height: 210px;
+            background-color: #5c0d1e;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            cursor: pointer;
+            transition: transform 0.5s ease, box-shadow 0.4s ease;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .envelope {
+                width: 480px;
+                height: 290px;
+            }
+        }
+
+        .envelope:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(212, 175, 55, 0.4);
+        }
+
+        .envelope .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background-color: #731227;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            transition: transform 0.6s ease-in-out;
+            z-index: 4;
+            border-top: 2px solid rgba(212, 175, 55, 0.7);
+        }
+
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope .pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(180deg, #480917 0%, #220209 100%);
+            clip-path: polygon(0 38%, 50% 68%, 100% 38%, 100% 100%, 0 100%);
+            z-index: 3;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .envelope .letter {
+            position: absolute;
+            bottom: 10px;
+            left: 4%;
+            width: 92%;
+            height: 85%;
+            background: #fffdf9;
+            color: #2b0812;
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+            z-index: 2;
+            overflow-y: auto;
+        }
+
+        .envelope.open .letter {
+            transform: translateY(-165px) scale(1.04);
+            z-index: 5;
+            height: 380px;
+        }
+
+        @media (min-width: 640px) {
+            .envelope.open .letter {
+                transform: translateY(-210px) scale(1.05);
+                height: 460px;
+                padding: 26px;
+            }
+        }
+
+        /* ASCENDING FLOATING ANIMATION (Hearts & Badges Float UP & Fade Out) */
+        @keyframes floatUpwardAndFade {
+            0% {
+                transform: translateY(0) scale(0.75) rotate(0deg);
+                opacity: 1;
+            }
+            15% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-105vh) scale(1.35) rotate(22deg);
+                opacity: 0;
+            }
+        }
+
+        .floating-element {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: floatUpwardAndFade 5.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            will-change: transform, opacity;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(92, 13, 30, 0.1);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.5);
+            border-radius: 10px;
+        }
+
+        /* Background Particle Canvas */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="relative text-slate-100 pb-20 selection:bg-pink-600 selection:text-white">
+
+    <!-- Background Particle Canvas for Golden Sparkles -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- MANDATORY AUDIO ELEMENT FOR LOCAL m1.mp3 -->
+    <audio id="bgMusic" src="m1.mp3" loop preload="auto"></audio>
+
+    <!-- Discreet Floating Top Right Audio Toggle Button & Header -->
+    <header class="fixed top-0 z-40 w-full backdrop-blur-md bg-burgundy-950/80 border-b border-warmGold/20 px-4 py-3 flex items-center justify-between shadow-lg">
+        <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-heart text-pink-500 animate-pulse text-base sm:text-lg"></i>
+            <span class="font-serif italic text-sm sm:text-lg font-bold tracking-wide gold-text">Nuestra Historia</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <!-- Discreet Floating Music Control Button -->
+            <button id="musicToggleBtn" onclick="toggleMusic(event)" class="w-10 h-10 rounded-full bg-burgundy-900/90 border border-warmGold/60 text-warmGold flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition duration-200 touch-manipulation" title="Música de fondo (m1.mp3)">
+                <i id="musicIcon" class="fa-solid fa-music text-sm animate-bounce"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 pt-20 sm:pt-24 relative z-10 space-y-12 sm:space-y-16">
+
+        <!-- Hero Title Section -->
+        <section class="text-center space-y-4 sm:space-y-6 pt-2">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-burgundy-900/90 border border-warmGold/50 text-amber-200 text-xs sm:text-sm tracking-wider uppercase font-medium shadow-inner">
+                <i class="fa-solid fa-sparkles text-warmGold"></i>
+                <span>Para la mujer de mi vida</span>
+                <i class="fa-solid fa-sparkles text-warmGold"></i>
+            </div>
+            
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+                Gracias por tanto amor, <br>
+                <span class="gold-text font-cursive text-6xl sm:text-8xl md:text-9xl font-normal block mt-2" id="displayHerName">Mi Amor</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-xs sm:text-base md:text-lg text-pink-100/90 font-light leading-relaxed px-2">
+                Hoy celebro cada momento a tu lado: nuestros 9 meses de novios, nuestro primer mes compartiendo un hogar y el sueño inolvidable de nuestra próxima boda.
+            </p>
+
+            <!-- Love Milestone Badges -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto pt-2">
+                <div class="glass-card p-4 rounded-2xl border border-warmGold/30 text-center hover:scale-102 transition duration-300">
+                    <div class="text-2xl sm:text-4xl font-serif font-bold text-pink-300 mb-1">9 Meses</div>
+                    <div class="text-[11px] sm:text-xs uppercase tracking-wider text-amber-200/80 font-medium">De Novios Enamorados</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl border border-warmGold/30 text-center hover:scale-102 transition duration-300">
+                    <div class="text-2xl sm:text-4xl font-serif font-bold text-amber-300 mb-1">~1 Mes</div>
+                    <div class="text-[11px] sm:text-xs uppercase tracking-wider text-amber-200/80 font-medium">Viviendo en Nuestro Hogar</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl border border-warmGold/30 text-center hover:scale-102 transition duration-300">
+                    <div class="text-2xl sm:text-4xl font-serif font-bold text-rose-300 mb-1">Próximamente</div>
+                    <div class="text-[11px] sm:text-xs uppercase tracking-wider text-amber-200/80 font-medium">Nuestra Boda Soñada</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Letter Envelope Section -->
+        <section class="flex flex-col items-center justify-center space-y-4 pt-2">
+            <div class="text-center space-y-1">
+                <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-pink-200">Una Carta Especial Para Ti</h2>
+                <p class="text-xs sm:text-sm text-pink-200/70 italic">Toca la carta o el botón para abrir tu mensaje de amor</p>
+            </div>
+
+            <div class="envelope-container my-6 w-full max-w-md flex justify-center">
+                <div class="envelope shadow-2xl" id="romanticEnvelope" onclick="toggleLetter()">
+                    <div class="flap"></div>
+                    <div class="pocket"></div>
+                    <div class="letter custom-scrollbar" onclick="event.stopPropagation()">
+                        <div class="border border-burgundy-900/20 p-3 sm:p-4 h-full rounded flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-2 pb-2 border-b border-burgundy-900/15">
+                                    <span class="font-cursive text-3xl sm:text-4xl font-bold text-burgundy-900" id="letterHeaderGreeting">Mi niña hermosa,</span>
+                                    <i class="fa-solid fa-heart text-burgundy-800 text-sm"></i>
+                                </div>
+                                <div class="font-serif text-xs sm:text-sm text-gray-800 leading-relaxed space-y-2.5 whitespace-pre-line" id="displayLetterBody">
+                                    Parece increíble lo rápido que pasa el tiempo cuando uno es verdaderamente feliz. Cumplir 9 meses de novios a tu lado me confirma cada día que eres el regalo más grande de mi vida.
+
+                                    Llevar casi un mes viviendo juntos bajo el mismo techo ha sido una aventura hermosa. Despertar contigo, compartir nuestras mañanas y construir nuestro hogar día a día es algo que no cambio por nada en el mundo.
+
+                                    Y ayer... ayer sentí que mi corazón se llenaba aún más de amor. Al escucharte y verte hablar sobre el salón de bodas que deseas, entendí perfectamente tu ilusión. Prometo dar lo mejor de mí para que caminemos juntos hacia esa boda soñada. Te amo con todo mi ser.
+                                </div>
+                            </div>
+                            <div class="pt-3 text-right border-t border-burgundy-900/15 mt-3">
+                                <span class="font-cursive text-2xl sm:text-3xl font-bold text-burgundy-900 block" id="displaySignOff">Con todo mi amor por siempre,</span>
+                                <span class="font-serif text-[11px] text-burgundy-800 font-semibold tracking-wide uppercase" id="displayHisName">Tu Novio</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="toggleLetter()" class="px-6 py-3 rounded-full bg-burgundy-800 hover:bg-burgundy-700 text-amber-200 border border-warmGold/50 text-xs sm:text-sm font-semibold transition shadow-lg flex items-center gap-2 touch-manipulation min-h-[44px]">
+                <i class="fa-solid fa-envelope-open-text text-amber-300"></i>
+                <span id="envelopeBtnText">Abrir Carta</span>
+            </button>
+        </section>
+
+        <!-- Highlighted Section: "El Salón de Tus Sueños" -->
+        <section class="glass-card venue-glow-box rounded-3xl p-6 sm:p-10 relative overflow-hidden border border-warmGold shadow-2xl">
+            <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8 relative z-10">
+                <div class="w-full md:w-1/3 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-warmGold via-amber-200 to-amber-500 p-1 shadow-2xl flex items-center justify-center mb-2 sm:mb-3">
+                        <div class="w-full h-full bg-burgundy-950 rounded-full flex items-center justify-center text-warmGold">
+                            <i class="fa-solid fa-church text-3xl sm:text-5xl animate-bounce"></i>
+                        </div>
+                    </div>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-amber-300 font-bold mt-1">Un Momento Inolvidable</span>
+                    <h3 class="font-serif text-lg sm:text-2xl font-bold text-white mt-1">El Salón de Tus Sueños</h3>
+                </div>
+
+                <div class="w-full md:w-2/3 space-y-3 sm:space-y-4 text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-warmGold/20 text-amber-200 text-xs font-semibold border border-warmGold/40">
+                        <i class="fa-solid fa-star text-amber-300"></i>
+                        <span>Ayer entendí tu deseo</span>
+                    </div>
+
+                    <h2 class="font-serif text-xl sm:text-3xl font-bold gold-text leading-snug" id="displayVenueTitle">
+                        "Ayer entendí por fin con todo mi corazón la ilusión y el deseo del salón que sueñas para nuestra boda"
+                    </h2>
+
+                    <p class="text-pink-100/95 text-xs sm:text-base leading-relaxed font-light whitespace-pre-line" id="displayVenueText">
+                        Ayer entendí por fin con todo mi corazón la ilusión y el deseo del salón que sueñas para nuestra boda. Verte imaginar ese momento me hizo enamorarme aún más de ti y desear con más fuerza el día en que unamos nuestras vidas en ese lugar mágico.
+
+                        No es solo un salón; comprendí que en ese lugar imaginas nuestras miradas, nuestro primer baile y el inicio de nuestra vida juntos ante las personas que más amamos. Prometo hacer todo para que ese sueño sea una realidad inolvidable.
+                    </p>
+
+                    <div class="pt-1 flex items-center gap-2 text-xs text-amber-300/90 italic font-medium">
+                        <i class="fa-solid fa-heart text-pink-400"></i>
+                        <span>Guardado en mi alma para siempre</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Milestone Cards -->
+        <section class="space-y-6 sm:space-y-8">
+            <div class="text-center space-y-1">
+                <span class="text-[11px] sm:text-xs uppercase tracking-widest text-amber-300/90 font-semibold">Nuestra Historia</span>
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-white">Tres Grandes Razones para Celebrar</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Milestone Card 1 -->
+                <div class="glass-card rounded-2xl p-6 border border-pink-500/20 hover:border-warmGold/50 transition duration-300 flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-300 font-serif font-bold text-sm">1</span>
+                            <i class="fa-solid fa-heart text-pink-400 text-xl group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-pink-200">9 Meses de Novios</h3>
+                        <p class="text-xs sm:text-sm text-pink-100/80 leading-relaxed">
+                            Nueve meses llenos de risas, aprendizaje y un amor incondicional que sigue creciendo cada día.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-pink-300">
+                        <span>Complicidad & Amor</span>
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+
+                <!-- Milestone Card 2 -->
+                <div class="glass-card rounded-2xl p-6 border border-amber-500/20 hover:border-warmGold/50 transition duration-300 flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-300 font-serif font-bold text-sm">2</span>
+                            <i class="fa-solid fa-house-chimney-heart text-amber-400 text-xl group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-amber-200">Casi 1 Mes Viviendo Juntos</h3>
+                        <p class="text-xs sm:text-sm text-pink-100/80 leading-relaxed">
+                            La magia de despertar juntos, construir nuestro propio espacio y compartir la vida diaria.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-amber-300">
+                        <span>Nuestro Dulce Hogar</span>
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+
+                <!-- Milestone Card 3 -->
+                <div class="glass-card rounded-2xl p-6 border border-rose-500/20 hover:border-warmGold/50 transition duration-300 flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-300 font-serif font-bold text-sm">3</span>
+                            <i class="fa-solid fa-ring text-rose-400 text-xl group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-rose-200">Próximos a Casarnos</h3>
+                        <p class="text-xs sm:text-sm text-pink-100/80 leading-relaxed">
+                            El paso más hermoso rumbo al altar para sellar nuestra unión para siempre.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-rose-300">
+                        <span>Hacia el Altar</span>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Ascending Shower Trigger -->
+        <section class="text-center py-4">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 max-w-2xl mx-auto space-y-5 border border-warmGold/50">
+                <div class="w-16 h-16 rounded-full bg-pink-500/20 border border-pink-400/40 flex items-center justify-center mx-auto text-pink-400 text-2xl animate-pulse">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold gold-text">¿Quieres más amor flotando?</h2>
+                <p class="text-xs sm:text-sm text-pink-100/80 max-w-md mx-auto">
+                    Presiona el botón para llenar la pantalla con una lluvia de corazones e insignias que suben hacia arriba hasta desaparecer.
+                </p>
+
+                <button onclick="triggerAscendingShower()" class="px-8 py-4 rounded-full bg-gradient-to-r from-burgundy-800 via-pink-600 to-amber-600 hover:from-burgundy-700 hover:to-amber-500 text-white font-bold text-sm sm:text-base shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-3 mx-auto border border-amber-300/60 touch-manipulation min-h-[52px]">
+                    <i class="fa-solid fa-heart text-lg text-pink-200"></i>
+                    <span>¡Enviar Amor Flotante! ❤️</span>
+                </button>
+            </div>
+        </section>
+
+        <footer class="text-center space-y-3 pt-8 border-t border-pink-500/20">
+            <p class="font-cursive text-4xl sm:text-5xl text-amber-200">"Desde que te tengo, todo es perfecto..."</p>
+            <p class="text-[11px] text-pink-300/60 uppercase tracking-widest">Hecho con todo mi corazón para ti</p>
+        </footer>
+
+    </main>
+
+    <!-- Discreet Customization Modal -->
+    <div id="customizeModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-burgundy-950 border border-warmGold/50 rounded-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-5 sm:p-6 space-y-5 custom-scrollbar text-left">
+            <div class="flex justify-between items-center border-b border-warmGold/30 pb-3">
+                <h3 class="font-serif text-lg font-bold gold-text flex items-center gap-2">
+                    <i class="fa-solid fa-sliders"></i> Personalizar Nombres y Textos
+                </h3>
+                <button onclick="closeCustomizeModal()" class="text-pink-300 hover:text-white text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="customizeForm" onsubmit="saveCustomizations(event)" class="space-y-4 text-xs sm:text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-amber-200 mb-1">Nombre de Ella (Tu Novia)</label>
+                        <input type="text" id="inputHerName" class="w-full bg-burgundy-900/90 border border-pink-500/30 rounded-lg p-2.5 text-white focus:outline-none focus:border-warmGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-amber-200 mb-1">Tu Nombre (Tu Novio)</label>
+                        <input type="text" id="inputHisName" class="w-full bg-burgundy-900/90 border border-pink-500/30 rounded-lg p-2.5 text-white focus:outline-none focus:border-warmGold">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-amber-200 mb-1">Encabezado de la Carta</label>
+                    <input type="text" id="inputLetterGreeting" class="w-full bg-burgundy-900/90 border border-pink-500/30 rounded-lg p-2.5 text-white focus:outline-none focus:border-warmGold">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-amber-200 mb-1">Cuerpo de la Carta</label>
+                    <textarea id="inputLetterBody" rows="4" class="w-full bg-burgundy-900/90 border border-pink-500/30 rounded-lg p-2.5 text-white focus:outline-none focus:border-warmGold custom-scrollbar"></textarea>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-3 border-t border-warmGold/20">
+                    <button type="button" onclick="closeCustomizeModal()" class="px-4 py-2 rounded-lg bg-burgundy-900 text-pink-200 text-xs">Cancelar</button>
+                    <button type="submit" class="px-5 py-2 rounded-lg bg-warmGold text-burgundy-950 font-bold text-xs shadow-lg">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Default text content
+        const DEFAULT_DATA = {
+            herName: "Mi Amor",
+            hisName: "Tu Novio",
+            letterGreeting: "Mi niña hermosa,",
+            letterBody: `Parece increíble lo rápido que pasa el tiempo cuando uno es verdaderamente feliz. Cumplir 9 meses de novios a tu lado me confirma cada día que eres el regalo más grande de mi vida.
+
+Llevar casi un mes viviendo juntos bajo el mismo techo ha sido una aventura hermosa. Despertar contigo, compartir nuestras mañanas y construir nuestro hogar día a día es algo que no cambio por nada en el mundo.
+
+Y ayer... ayer sentí que mi corazón se llenaba aún más de amor. Al escucharte y verte hablar sobre el salón de bodas que deseas, entendí perfectamente tu ilusión. Prometo dar lo mejor de mí para que caminemos juntos hacia esa boda soñada. Te amo con todo mi ser.`,
+            venueTitle: `"Ayer entendí por fin con todo mi corazón la ilusión y el deseo del salón que sueñas para nuestra boda"`,
+            venueText: `Ayer entendí por fin con todo mi corazón la ilusión y el deseo del salón que sueñas para nuestra boda. Verte imaginar ese momento me hizo enamorarme aún más de ti y desear con más fuerza el día en que unamos nuestras vidas en ese lugar mágico.
+
+No es solo un salón; comprendí que en ese lugar imaginas nuestras miradas, nuestro primer baile y el inicio de nuestra vida juntos ante las personas que más amamos. Prometo hacer todo para que ese sueño sea una realidad inolvidable.`
+        };
+
+        const ROMANTIC_FLOATING_MESSAGES = [
+            "Te amo 💖",
+            "Desde Que Te Tengo ✨",
+            "9 Meses Juntos 🌹",
+            "Nuestro Hogar 🏡",
+            "El Salón de Tus Sueños 💒",
+            "Próximos a Casarnos 💍",
+            "Para Siempre 💕",
+            "Eres Mi Vida 🌸"
+        ];
+
+        let state = { ...DEFAULT_DATA };
+        let isEnvelopeOpen = false;
+        let isMusicPlaying = false;
+
+        // Window load initialization
+        window.addEventListener('load', function() {
+            loadSavedData();
+            initParticles();
+            initAudioAutoPlay();
+            updateDOM();
+        });
+
+        /* --- TRANSPARENT AUDIO AUTOPLAY FOR m1.mp3 --- */
+        function initAudioAutoPlay() {
+            const music = document.getElementById('bgMusic');
+
+            // Attempt initial play
+            const attemptPlay = () => {
+                if (isMusicPlaying) return;
+                music.play().then(() => {
+                    isMusicPlaying = true;
+                    updateMusicUI(true);
+                }).catch(err => {
+                    // Autoplay blocked by browser policy, waiting for first interaction
+                });
+            };
+
+            attemptPlay();
+
+            // First interaction handlers across screen
+            const handleFirstUserTouch = () => {
+                if (!isMusicPlaying) {
+                    attemptPlay();
+                }
+            };
+
+            ['click', 'touchstart', 'pointerdown', 'keydown'].forEach(evt => {
+                document.addEventListener(evt, handleFirstUserTouch, { passive: true });
+            });
+        }
+
+        function toggleMusic(e) {
+            if (e) e.stopPropagation();
+            const music = document.getElementById('bgMusic');
+            
+            if (isMusicPlaying) {
+                music.pause();
+                isMusicPlaying = false;
+                updateMusicUI(false);
+            } else {
+                music.play().then(() => {
+                    isMusicPlaying = true;
+                    updateMusicUI(true);
+                }).catch(() => {});
+            }
+        }
+
+        function updateMusicUI(playing) {
+            const icon = document.getElementById('musicIcon');
+            const btn = document.getElementById('musicToggleBtn');
+
+            if (playing) {
+                icon.className = "fa-solid fa-music text-sm animate-bounce";
+                btn.classList.add('border-warmGold');
+                btn.classList.remove('opacity-60');
+            } else {
+                icon.className = "fa-solid fa-volume-xmark text-sm";
+                btn.classList.remove('border-warmGold');
+                btn.classList.add('opacity-60');
+            }
+        }
+
+        /* --- INTERACTIVE ENVELOPE --- */
+        function toggleLetter() {
+            const env = document.getElementById('romanticEnvelope');
+            const btnText = document.getElementById('envelopeBtnText');
+            isEnvelopeOpen = !isEnvelopeOpen;
+
+            if (isEnvelopeOpen) {
+                env.classList.add('open');
+                btnText.innerText = 'Cerrar Carta';
+                spawnAscendingBurst(18, true);
+
+                // Ensure music plays upon opening letter
+                const music = document.getElementById('bgMusic');
+                if (!isMusicPlaying) {
+                    music.play().then(() => {
+                        isMusicPlaying = true;
+                        updateMusicUI(true);
+                    }).catch(() => {});
+                }
+            } else {
+                env.classList.remove('open');
+                btnText.innerText = 'Abrir Carta';
+            }
+        }
+
+        /* --- ASCENDING FLOATING HEARTS & BADGES --- */
+        function triggerAscendingShower() {
+            spawnAscendingBurst(28, true);
+        }
+
+        function spawnAscendingBurst(count, includeText) {
+            const heartEmojis = ['❤️', '💖', '✨', '💕', '💍', '🌸', '🌹', '💒', '🎶'];
+
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const isTextPill = includeText && (i % 3 === 0);
+                    const el = document.createElement('div');
+                    el.className = 'floating-element';
+
+                    if (isTextPill) {
+                        const randomMsg = ROMANTIC_FLOATING_MESSAGES[Math.floor(Math.random() * ROMANTIC_FLOATING_MESSAGES.length)];
+                        el.className += ' glass-card border border-warmGold/70 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-amber-200 shadow-2xl flex items-center gap-2';
+                        el.innerHTML = `<i class="fa-solid fa-heart text-pink-400"></i> ${randomMsg}`;
+                    } else {
+                        const emoji = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                        el.className += ' text-2xl sm:text-4xl filter drop-shadow-lg';
+                        el.innerText = emoji;
+                    }
+
+                    const randomX = Math.random() * 84 + 5;
+                    el.style.left = randomX + 'vw';
+                    el.style.bottom = '-60px';
+
+                    const duration = (Math.random() * 1.5 + 3.8).toFixed(2);
+                    el.style.animationDuration = duration + 's';
+
+                    document.body.appendChild(el);
+
+                    setTimeout(() => {
+                        el.remove();
+                    }, parseFloat(duration) * 1000 + 100);
+                }, i * 110);
+            }
+        }
+
+        /* --- BACKGROUND CANVAS PARTICLES --- */
+        function initParticles() {
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const particles = [];
+            const particleCount = Math.min(Math.floor(window.innerWidth / 25), 45);
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 0.5,
+                    color: Math.random() > 0.5 ? 'rgba(212, 175, 55, ' : 'rgba(244, 114, 182, ',
+                    alpha: Math.random() * 0.6 + 0.2,
+                    speedY: Math.random() * 0.3 + 0.1,
+                    speedX: (Math.random() - 0.5) * 0.2
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color + p.alpha + ')';
+                    ctx.fill();
+
+                    p.y -= p.speedY;
+                    p.x += p.speedX;
+
+                    if (p.y < 0) {
+                        p.y = canvas.height;
+                        p.x = Math.random() * canvas.width;
+                    }
+                });
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        /* --- LOCAL STORAGE STATE MANAGEMENT --- */
+        function loadSavedData() {
+            const savedState = localStorage.getItem('romantic_page_final_state');
+            if (savedState) {
+                try {
+                    state = { ...DEFAULT_DATA, ...JSON.parse(savedState) };
+                } catch (e) {
+                    console.error("Error loading state", e);
+                }
+            }
+        }
+
+        function saveData() {
+            localStorage.setItem('romantic_page_final_state', JSON.stringify(state));
+            updateDOM();
+        }
+
+        function updateDOM() {
+            document.getElementById('displayHerName').innerText = state.herName;
+            document.getElementById('displayHisName').innerText = state.hisName;
+            document.getElementById('letterHeaderGreeting').innerText = state.letterGreeting;
+            document.getElementById('displayLetterBody').innerText = state.letterBody;
+            document.getElementById('displayVenueTitle').innerText = state.venueTitle;
+            document.getElementById('displayVenueText').innerText = state.venueText;
+
+            document.getElementById('inputHerName').value = state.herName;
+            document.getElementById('inputHisName').value = state.hisName;
+            document.getElementById('inputLetterGreeting').value = state.letterGreeting;
+            document.getElementById('inputLetterBody').value = state.letterBody;
+        }
+
+        function openCustomizeModal() {
+            document.getElementById('customizeModal').classList.remove('hidden');
+        }
+
+        function closeCustomizeModal() {
+            document.getElementById('customizeModal').classList.add('hidden');
+        }
+
+        function saveCustomizations(e) {
+            e.preventDefault();
+            state.herName = document.getElementById('inputHerName').value;
+            state.hisName = document.getElementById('inputHisName').value;
+            state.letterGreeting = document.getElementById('inputLetterGreeting').value;
+            state.letterBody = document.getElementById('inputLetterBody').value;
+
+            saveData();
+            closeCustomizeModal();
+            spawnAscendingBurst(12, true);
+        }
+    </script>
+</body>
+</html>
