@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101327">
+  <meta name="description" content="Una sorpresa mágica de cumpleaños hecha con amor para Karen.">
+  <meta property="og:title" content="¡Feliz cumpleaños, Karen! ✨">
+  <meta property="og:description" content="En Hogwarts hoy se celebra algo maravilloso: tu cumpleaños.">
+  <title>Feliz cumpleaños, Karen ✦ Tu día mágico</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap');
+    :root { --night:#0d1023; --midnight:#14152d; --navy:#1a1e3a; --gold:#f2d899; --gold-deep:#cda664; --ivory:#fff6e4; --lilac:#bca6e6; --cream:#f8edd5; --ink:#302538; --muted:#c7c5d3; --rose:#e1a2a5; --glass:rgba(255,255,255,.055); --edge:rgba(235,210,156,.23); --shadow:0 22px 70px rgba(0,0,0,.35) }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;overflow-x:hidden;background:var(--night);color:var(--ivory);font-family:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6}
+    body.modal-open{overflow:hidden}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{font:inherit}
+    button:focus-visible,a:focus-visible{outline:3px solid #fff3bc;outline-offset:4px}
+    a{color:inherit;text-decoration:none}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    ::selection{background:#ddbd75;color:#17142b}
+    .site-header{position:absolute;top:0;left:0;width:100%;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:24px clamp(20px,5vw,80px);gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:'Cinzel',Georgia,serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;line-height:1.45}
+    .brand-mark{display:grid;place-items:center;width:42px;height:42px;flex:none;border:1px solid #d9bd7c;border-radius:50%;font:25px Georgia,serif;color:var(--gold);box-shadow:0 0 20px #e9bd7333,inset 0 0 14px #e9bd7322}
+    .sound-btn{display:inline-flex;align-items:center;gap:8px;background:#0d102b8c;border:1px solid var(--edge);padding:9px 14px;color:var(--gold);border-radius:40px;cursor:pointer;font-size:12px;backdrop-filter:blur(12px)}
+    .sound-btn .speaker{font-size:16px}
+    .hero{position:relative;min-height:790px;min-height:100svh;display:flex;align-items:center;justify-content:center;isolation:isolate;overflow:hidden;padding:130px 20px 190px;background:radial-gradient(ellipse at 50% 33%,#41385c 0%,#222341 30%,#111831 56%,#0b1126 84%)}
+    .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 18% 64%,rgba(153,99,175,.14),transparent 28%),radial-gradient(ellipse at 79% 25%,rgba(224,177,102,.12),transparent 23%);pointer-events:none}
+    .hero::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:180px;background:linear-gradient(transparent,#0d1023);z-index:2;pointer-events:none}
+    .stars{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+    .star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff4d6;box-shadow:0 0 6px #e7d5ae;animation:twinkle var(--speed,3s) ease-in-out infinite alternate;animation-delay:var(--delay,0s);opacity:.6}
+    .star.big{width:4px;height:4px;box-shadow:0 0 12px 3px #f8e4bb77}
+    @keyframes twinkle{from{opacity:.14;transform:scale(.55)}to{opacity:.95;transform:scale(1.15)}}
+    .moon{position:absolute;width:140px;height:140px;top:16%;right:16%;border-radius:50%;z-index:0;background:radial-gradient(circle at 36% 33%,#fff8dc 0%,#efdaae 62%,#c5ae8c 100%);box-shadow:0 0 34px 13px #e4d5b54d,0 0 105px 65px #e4d5b516;opacity:.88}
+    .shooting-star{position:absolute;left:12%;top:25%;width:135px;height:1px;background:linear-gradient(90deg,transparent,#fff5cf);transform:rotate(-28deg);opacity:0;animation:shoot 9s linear infinite;z-index:0}
+    @keyframes shoot{0%,72%,100%{opacity:0;transform:translate(0,0) rotate(-28deg)}73%{opacity:1}78%{opacity:0;transform:translate(240px,125px) rotate(-28deg)}}
+    .castle-wrap{position:absolute;inset:auto 0 -10px;z-index:1;display:flex;justify-content:center;pointer-events:none;opacity:.94}
+    .castle-art{width:max(110%,970px);min-width:970px;max-height:470px;display:block;filter:drop-shadow(0 0 38px #151830)}
+    .hero-content{z-index:3;position:relative;max-width:880px;text-align:center;transform:translateY(-35px)}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;justify-content:center;color:var(--gold);letter-spacing:.31em;font-size:11px;text-transform:uppercase;font-weight:700;margin-bottom:21px}
+    .eyebrow:before,.eyebrow:after{content:"✦";font-size:11px;letter-spacing:0;color:var(--gold-deep)}
+    .hero h1{margin:0;font-family:'Cinzel',Georgia,serif;font-weight:500;text-transform:none;font-size:clamp(42px,6.4vw,92px);line-height:1.11;letter-spacing:-.04em;text-shadow:0 4px 34px #05060d}
+    .hero h1 span{display:block;color:var(--gold);font-family:'Great Vibes',cursive;font-size:clamp(83px,12vw,175px);font-weight:400;line-height:.91;letter-spacing:0;padding:2px 20px 15px;filter:drop-shadow(0 0 20px #e4b56a77)}
+    .hero-lede{max-width:600px;margin:29px auto 32px;font-family:Georgia,serif;font-size:clamp(16px,1.9vw,21px);color:#f4e6d5;line-height:1.65}
+    .hero-lede em{color:var(--gold);font-style:normal}
+    .primary-btn,.secondary-btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;border-radius:50px;padding:15px 26px;font-weight:700;font-size:13px;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+    .primary-btn{color:#29223b;border:1px solid #ffeab2;background:linear-gradient(135deg,#ffe7ae,#d3a965);box-shadow:0 5px 35px #caa36444}
+    .primary-btn:hover{transform:translateY(-3px);box-shadow:0 9px 45px #caa36477}
+    .secondary-btn{color:var(--gold);border:1px solid #d7b77e75;background:#ffffff0a}
+    .secondary-btn:hover{background:#ffffff15;transform:translateY(-2px)}
+    .scroll-hint{position:absolute;z-index:4;bottom:31px;left:50%;transform:translateX(-50%);display:flex;gap:6px;align-items:center;flex-direction:column;font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#d2c1a6;opacity:.8}
+    .scroll-hint i{height:24px;width:1px;background:#e5d5ac;animation:rise 1.7s ease-in-out infinite}
+    @keyframes rise{50%{transform:translateY(6px);opacity:.4}}
+    .section{position:relative;padding:105px 24px}
+    .section-inner{max-width:1100px;margin:0 auto}
+    .section-label{color:var(--gold-deep);letter-spacing:.26em;text-transform:uppercase;font-size:11px;font-weight:700;text-align:center;margin:0 0 12px}
+    .section-heading{font-family:'Cinzel',Georgia,serif;font-weight:500;font-size:clamp(28px,4vw,48px);letter-spacing:-.02em;line-height:1.22;text-align:center;margin:0;color:var(--ivory)}
+    .section-desc{text-align:center;color:var(--muted);max-width:620px;margin:16px auto 0;font-size:15px}
+    .section-ornament{text-align:center;color:var(--gold);letter-spacing:8px;margin:24px 0 0;font-size:12px}
+    .intro-section{padding-top:110px;padding-bottom:96px;background:radial-gradient(circle at 50% 0%,#241e3b,#11152a 66%)}
+    .intro-card{position:relative;max-width:800px;margin:54px auto 0;border:1px solid var(--edge);background:linear-gradient(145deg,#ffffff0d,#ffffff04);padding:clamp(28px,5vw,61px);border-radius:17px;box-shadow:var(--shadow);text-align:center;overflow:hidden}
+    .intro-card:before,.intro-card:after{position:absolute;color:#d7b77c69;font:28px Georgia,serif}.intro-card:before{content:"✧";top:18px;left:22px}.intro-card:after{content:"✧";bottom:18px;right:22px}
+    .intro-card .script{font:clamp(36px,5vw,60px)/1.2 'Great Vibes',cursive;color:var(--gold);margin:0 0 12px}
+    .intro-card p:not(.script){max-width:650px;margin:0 auto;color:#e2d9d1;font-family:Georgia,serif;font-size:clamp(16px,1.7vw,20px);line-height:1.85}
+    .cake-section{background:radial-gradient(ellipse at 50% 45%,#302344 0%,#15152e 50%,#101226 100%);overflow:hidden;padding:105px 24px 114px}
+    .cake-stage{margin:38px auto 0;display:flex;align-items:center;flex-direction:column;position:relative;max-width:560px;min-height:345px}
+    .cake-stage:before{content:"";position:absolute;width:460px;height:260px;bottom:0;left:50%;transform:translateX(-50%);border-radius:50%;background:#e6bb7c19;filter:blur(50px)}
+    .cake{position:relative;margin:53px auto 0;width:min(290px,75vw);height:235px;filter:drop-shadow(0 15px 20px #0008)}
+    .cake-bottom{position:absolute;bottom:27px;left:0;right:0;height:115px;border-radius:15px 15px 45% 45% / 12px 12px 28px 28px;background:linear-gradient(90deg,#c98d9d,#fac6b8 35%,#f5b4b0 70%,#b47791);border-bottom:12px solid #c97f95;box-shadow:inset 0 12px 0 #fff5e4aa,inset 0 -12px 20px #a34c6b50}
+    .cake-middle{position:absolute;bottom:119px;left:26px;right:26px;height:82px;background:linear-gradient(90deg,#c8879d,#ffe1c3 45%,#e8a6a9);border-radius:12px 12px 19px 19px;box-shadow:inset 0 -14px 0 #d797a4}
+    .icing{position:absolute;bottom:173px;left:26px;right:26px;height:35px;border-radius:50% 50% 19px 19px;background:#fff2e0;z-index:2;box-shadow:0 6px 0 #fff2df9e}
+    .icing:after{content:"";position:absolute;top:18px;left:12%;width:16px;height:29px;background:#fff2e0;border-radius:0 0 20px 20px;box-shadow:52px -5px 0 -2px #fff2e0,104px 4px 0 2px #fff2e0,156px -2px 0 -1px #fff2e0}
+    .cake-plate{position:absolute;bottom:9px;width:112%;left:-6%;height:29px;border-radius:50%;background:linear-gradient(#ffe7b6,#bd915d);box-shadow:0 10px 0 #7e6587;z-index:-1}
+    .candles{position:absolute;z-index:4;bottom:195px;left:50%;transform:translateX(-50%);width:160px;height:95px;display:flex;justify-content:space-between;align-items:flex-end}
+    .candle{position:relative;width:17px;height:61px;border:0;border-radius:4px 4px 2px 2px;background:repeating-linear-gradient(145deg,#f8e5b0 0px,#f8e5b0 8px,#c69b6f 8px,#c69b6f 12px);cursor:pointer;box-shadow:inset -3px 0 0 #633f4a22}
+    .candle:nth-child(2){height:75px}.candle:nth-child(3){height:65px}
+    .candle:before{content:"";position:absolute;width:2px;height:10px;background:#3c3231;top:-9px;left:7px}
+    .flame{position:absolute;bottom:calc(100% + 8px);left:50%;width:17px;height:28px;transform:translateX(-50%);background:radial-gradient(circle at 50% 78%,#fffce2 8%,#ffe88d 27%,#ffad50 68%,transparent 78%);border-radius:65% 10% 65% 45%;transform-origin:bottom center;filter:drop-shadow(0 0 10px #ffba53);animation:flicker 1s ease-in-out infinite alternate;transition:opacity .25s}
+    .candle:nth-child(2) .flame{animation-delay:.32s}.candle:nth-child(3) .flame{animation-delay:.56s}
+    .candle.out .flame{opacity:0;animation:none}
+    @keyframes flicker{from{transform:translateX(-50%) rotate(-7deg) scale(.95)}to{transform:translateX(-50%) rotate(7deg) scale(1.1)}}
+    .cake-action{text-align:center;position:relative;z-index:2;margin-top:5px}
+    .cake-action p{color:#c9bfce;font-size:13px;margin:0 0 20px}
+    .wish-result{margin-top:18px;color:var(--gold);font-family:Georgia,serif;font-size:19px;min-height:29px}
+    .gifts-section{background:linear-gradient(180deg,#101226,#191730 47%,#101227);padding-bottom:115px}
+    .gifts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:53px}
+    .gift-card{border:1px solid #dfc68a50;border-radius:20px;background:linear-gradient(150deg,#ffffff0e,#ffffff06);padding:27px 25px 31px;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:405px;position:relative;overflow:hidden;box-shadow:0 15px 40px #0607134d;transition:transform .3s,border-color .3s,box-shadow .3s}
+    .gift-card:hover{transform:translateY(-7px);border-color:#e8ce9b91;box-shadow:0 25px 60px #05050d88}
+    .gift-number{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-deep);margin:0}
+    .gift-visual{position:relative;width:178px;height:160px;margin:24px auto 10px;display:grid;place-items:center}
+    .gift-halo{position:absolute;inset:9px;border-radius:50%;background:radial-gradient(circle,#d1b27637,transparent 70%);filter:blur(7px)}
+    .gift-box{position:relative;width:113px;height:96px;background:linear-gradient(115deg,#702f5d,#a3577d 46%,#6c2f5e);border-radius:7px 7px 12px 12px;transform:rotate(-6deg);box-shadow:13px 16px 25px #0005;animation:float 3.5s ease-in-out infinite}
+    .gift-card:nth-child(2) .gift-box{background:linear-gradient(115deg,#155867,#37818d 50%,#174b60);transform:rotate(5deg);animation-delay:.45s}
+    .gift-card:nth-child(3) .gift-box{background:linear-gradient(115deg,#74603f,#b68c55 50%,#74603f);transform:rotate(-3deg);animation-delay:.85s}
+    @keyframes float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+    .gift-box:before{content:"";position:absolute;top:-18px;left:-7px;right:-7px;height:25px;border-radius:6px;background:inherit;filter:brightness(1.27);box-shadow:0 5px 5px #0002}
+    .ribbon-v{position:absolute;top:-18px;left:43%;height:114px;width:18px;background:linear-gradient(90deg,#edc582,#ffe1a2,#d39f54);box-shadow:0 0 7px #0002}
+    .ribbon-h{position:absolute;top:32px;width:100%;height:17px;background:linear-gradient(#ffdda2,#d8ad66)}
+    .bow{position:absolute;z-index:4;left:50%;top:-39px;transform:translateX(-50%);width:42px;height:25px;border:10px solid #f3c67c;border-radius:50%;box-shadow:-25px 0 0 -3px #f3c67c,25px 0 0 -3px #f3c67c}
+    .gift-card h3{font-family:'Cinzel',Georgia,serif;font-size:18px;font-weight:600;line-height:1.4;margin:12px 0;color:var(--ivory)}
+    .gift-card p.description{font-size:13px;line-height:1.75;color:#c8c3d4;margin:0 auto 25px;max-width:260px;flex:1}
+    .gift-card .secondary-btn{font-size:12px;padding:12px 20px;width:100%}
+    .gift-opened{position:absolute;right:16px;top:15px;color:#c4e4b5;font-size:10px;letter-spacing:.1em;display:none}
+    .gift-card.opened .gift-opened{display:block}
+    .newspaper-section{background:linear-gradient(180deg,#111326,#1a182a);padding-top:90px;padding-bottom:100px}
+    .newspaper{position:relative;max-width:850px;margin:43px auto 0;background:linear-gradient(140deg,#fff5da,#efe0bc);color:#312c2d;border:8px solid #e2c99e;border-radius:3px;padding:clamp(18px,4vw,46px);box-shadow:0 26px 80px #0008;transform:rotate(-1deg);overflow:hidden}
+    .newspaper::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:radial-gradient(#664c35 0.5px,transparent .7px);background-size:5px 5px}
+    .paper-content{position:relative;z-index:1}
+    .paper-topline{display:flex;justify-content:space-between;gap:8px;padding-bottom:9px;border-bottom:2px solid #665746;font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-family:Georgia,serif}
+    .paper-name{text-align:center;font-family:'Cinzel',Georgia,serif;font-size:clamp(36px,7vw,70px);font-weight:800;line-height:1.28;letter-spacing:-.07em;border-bottom:4px double #695747;margin:8px 0 10px}
+    .paper-subline{text-align:center;font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;margin-bottom:16px}
+    .paper-headline{text-align:center;font:700 clamp(27px,4vw,43px)/1.2 Georgia,serif;margin:10px auto 18px;max-width:700px}
+    .paper-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:17px;border-top:1px solid #98876c}
+    .paper-cols p{font:15px/1.75 Georgia,serif;margin:0;text-align:justify}
+    .paper-stamp{width:140px;height:140px;border:2px solid #72583a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;transform:rotate(-15deg);margin:12px auto 0;text-align:center;color:#765439;line-height:1.3;letter-spacing:.04em;font-family:'Cinzel',serif;font-size:12px}
+    .paper-stamp b{font-size:28px;line-height:1.5}
+    .wishes-section{background:radial-gradient(ellipse at 50% 30%,#242141,#101328 75%);padding-bottom:120px}
+    .wishes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:55px}
+    .wish-card{position:relative;min-height:220px;border:1px solid #dfc68a38;border-radius:15px;background:radial-gradient(circle at 50% 15%,#be9acf17,transparent 65%),#ffffff08;color:var(--ivory);padding:24px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;cursor:pointer;transition:transform .25s,border-color .25s,background .25s}
+    .wish-card:hover,.wish-card.revealed{transform:translateY(-4px);border-color:#e0bc7988;background:#ffffff0f}
+    .wish-star{color:var(--gold);font-size:39px;line-height:1;text-shadow:0 0 25px #e5bd7680;transition:transform .3s}
+    .wish-card:hover .wish-star{transform:rotate(36deg) scale(1.15)}
+    .wish-name{font-family:'Cinzel',serif;font-size:12px;font-weight:600;line-height:1.5}
+    .wish-copy{display:none;font-family:Georgia,serif;font-size:13px;line-height:1.6;color:#e8d8d7}
+    .wish-card.revealed .wish-copy{display:block}
+    .wish-card.revealed .wish-star{font-size:24px}
+    .wish-card.revealed .wish-name{color:var(--gold)}
+    .finale{padding:105px 24px 125px;text-align:center;min-height:560px;background:radial-gradient(circle at 50% 60%,#47304b,#17152c 46%,#0d1023 85%);overflow:hidden}
+    .finale-heart{font-size:45px;color:#edbcc0;filter:drop-shadow(0 0 25px #edb6af88);animation:heartbeat 2.6s ease-in-out infinite}
+    @keyframes heartbeat{50%{transform:scale(1.14)}}
+    .finale h2{font:400 clamp(50px,8vw,105px)/1 'Great Vibes',cursive;color:var(--gold);margin:16px 0 22px;text-shadow:0 0 25px #dab26960}
+    .finale p{font:clamp(17px,2vw,23px)/1.75 Georgia,serif;max-width:700px;margin:0 auto 20px;color:#f0e6df}
+    .signature{font-family:'Great Vibes',cursive;font-size:54px;color:var(--gold);margin:17px auto}
+    .finale-stars{font-size:16px;color:var(--gold);letter-spacing:11px;margin-top:26px}
+    .footer{padding:28px 20px;text-align:center;background:#0a0c1c;border-top:1px solid #ffffff10;color:#a39ba8;font-size:11px;letter-spacing:.14em}
+    .modal-backdrop{position:fixed;inset:0;z-index:40;background:rgba(5,6,18,.82);backdrop-filter:blur(11px);display:grid;place-items:center;padding:15px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+    .modal-backdrop.active{opacity:1;visibility:visible}
+    .modal-panel{background:linear-gradient(160deg,#242039,#12162a);border:1px solid #d8b88069;border-radius:20px;width:min(100%,650px);max-height:min(91svh,850px);overflow-y:auto;overscroll-behavior:contain;box-shadow:0 30px 100px #000c;transform:translateY(20px) scale(.97);transition:transform .25s;position:relative;padding:clamp(20px,4vw,37px)}
+    .modal-backdrop.active .modal-panel{transform:translateY(0) scale(1)}
+    .modal-close{position:sticky;top:0;margin-left:auto;z-index:4;display:grid;place-items:center;width:36px;height:36px;background:#fff2;border:1px solid #ffe4ac55;color:#fff6e6;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}
+    .modal-brow{text-align:center;text-transform:uppercase;font-size:10px;letter-spacing:.3em;color:var(--gold);margin-top:0;margin-bottom:6px}
+    .modal-title{text-align:center;font-family:'Cinzel',Georgia,serif;font-size:clamp(22px,4vw,31px);line-height:1.25;font-weight:500;margin:0 0 22px;color:var(--ivory)}
+    .letter-paper{color:#413145;background:linear-gradient(140deg,#fff8e6,#ebd6b5);border:1px solid #d8b88a;border-radius:3px;padding:clamp(24px,5vw,48px);box-shadow:inset 0 0 55px #a77d4a20,0 12px 25px #0004;position:relative}
+    .letter-paper:before,.letter-paper:after{content:'✦';position:absolute;color:#b99861;font-size:22px;top:12px}.letter-paper:before{left:14px}.letter-paper:after{right:14px}
+    .letter-paper h3{font:39px/1.2 'Great Vibes',cursive;color:#80534d;text-align:center;margin:0 0 18px}
+    .letter-paper p{font:16px/1.9 Georgia,serif;margin:0 0 15px}
+    .letter-sign{text-align:right;font-family:'Great Vibes',cursive!important;font-size:37px!important;color:#7b4c58}
+    .coupon{position:relative;overflow:hidden;background:linear-gradient(135deg,#faf1dc,#e8d6b5);border:5px double #ad8653;color:#403347;text-align:center;padding:35px 22px;margin:0 auto 17px;border-radius:10px;box-shadow:inset 0 0 32px #ab86522b}
+    .coupon:before,.coupon:after{content:'✶';position:absolute;opacity:.25;font-size:150px;line-height:1;color:#b08a51}.coupon:before{top:-60px;left:-43px}.coupon:after{bottom:-69px;right:-36px}
+    .coupon > *{position:relative;z-index:1}
+    .coupon-top{font:700 11px 'Cinzel',serif;letter-spacing:.23em;color:#9a7848;margin:0 0 11px}
+    .coupon h3{font:600 clamp(22px,4vw,30px)/1.32 'Cinzel',Georgia,serif;margin:0 0 16px;color:#4e3850}
+    .coupon p{font:16px/1.7 Georgia,serif;margin:0 auto 15px;max-width:460px}
+    .coupon-divider{height:1px;background:linear-gradient(90deg,transparent,#bc9d6c,transparent);margin:20px 0}
+    .coupon-valid{display:inline-block;border:1px solid #aa8650;outline:1px solid #aa8650;outline-offset:4px;background:#f2e1bda9;color:#7d4a42;padding:10px 16px;margin:7px auto 20px;font:700 12px 'Cinzel',serif;letter-spacing:.1em;transform:rotate(-2deg)}
+    .coupon-foot{font-size:12px!important;color:#6c5260}
+    .coupon-sig{font:35px 'Great Vibes',cursive!important;color:#835b65}
+    .modal-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:17px}
+    .modal-help{text-align:center;font-size:12px;color:#c6bac9;margin:0 auto 12px;max-width:450px}
+    .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,30px);z-index:60;color:#2f2733;background:#f7dfad;border-radius:50px;padding:12px 18px;font-size:13px;opacity:0;pointer-events:none;box-shadow:0 10px 35px #0005;transition:opacity .25s,transform .25s;min-width:190px;text-align:center}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .confetti-piece{position:fixed;top:-25px;width:9px;height:17px;z-index:80;pointer-events:none;animation:confetti-fall var(--fall,3s) linear forwards}
+    @keyframes confetti-fall{to{transform:translate(var(--drift,70px),110vh) rotate(var(--rotation,900deg));opacity:.5}}
+    [data-reveal]{opacity:0;transform:translateY(23px);transition:opacity .8s ease,transform .8s ease}
+    [data-reveal].visible{opacity:1;transform:translateY(0)}
+    @media(max-width:900px){.gifts-grid{gap:13px}.gift-card{padding:23px 15px 25px}.wishes-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:680px){.site-header{padding:17px 19px}.brand{font-size:10px}.brand-mark{width:34px;height:34px;font-size:21px}.sound-btn{font-size:11px;padding:8px 11px}.hero{min-height:730px;min-height:100svh;padding:130px 19px 160px}.hero-content{transform:translateY(-28px)}.hero h1{font-size:clamp(42px,10vw,66px)}.hero h1 span{font-size:clamp(88px,20vw,135px)}.moon{width:87px;height:87px;top:17%;right:7%}.hero-lede{font-size:16px;line-height:1.55;margin:19px auto 25px}.castle-wrap{bottom:-2px}.castle-art{min-width:780px;width:780px;transform:translateX(-25px);max-height:370px}.eyebrow{letter-spacing:.13em;font-size:10px}.section{padding:75px 19px}.intro-card{margin-top:34px}.cake-stage{margin-top:30px}.gifts-grid{grid-template-columns:1fr;max-width:385px;margin:34px auto 0;gap:18px}.gift-card{min-height:auto;padding:22px 24px 25px}.gift-visual{margin:18px auto 4px;height:144px}.gift-card p.description{margin-bottom:20px}.paper-cols{grid-template-columns:1fr;gap:10px}.newspaper{transform:none}.paper-topline{font-size:8px}.paper-name{letter-spacing:-.07em}.wishes-grid{grid-template-columns:repeat(2,1fr);gap:10px}.wish-card{min-height:180px}.finale{min-height:470px}.finale p{font-size:18px}}
+    @media(max-width:380px){.brand span:last-child{max-width:120px}.hero h1{font-size:40px}.hero h1 span{font-size:83px}.sound-btn .sound-word{display:none}.wishes-grid{gap:8px}.wish-card{padding:15px 8px}.wish-name{font-size:11px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}[data-reveal]{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a href="#inicio" class="brand" aria-label="Volver al inicio"><span class="brand-mark">K</span><span>Un cumpleaños<br>extraordinario</span></a>
+    <button class="sound-btn" id="soundToggle" type="button" aria-pressed="false" aria-label="Activar sonido mágico"><span class="speaker" aria-hidden="true">♫</span><span class="sound-word">Activar magia sonora</span></button>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero" aria-labelledby="heroTitle">
+      <div class="stars" id="stars" aria-hidden="true"></div>
+      <div class="moon" aria-hidden="true"></div><div class="shooting-star" aria-hidden="true"></div>
+      <div class="castle-wrap" aria-hidden="true">
+        <svg class="castle-art" viewBox="0 0 1500 530" role="img" aria-label="Castillo mágico iluminado bajo las estrellas" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="castleMain" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#39344d"/><stop offset=".4" stop-color="#201d38"/><stop offset="1" stop-color="#090e22"/></linearGradient>
+            <linearGradient id="hills" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#1a213b"/><stop offset="1" stop-color="#0b1022"/></linearGradient>
+            <filter id="windowGlow"><feGaussianBlur stdDeviation="6"/></filter>
+          </defs>
+          <path d="M0 362Q210 270 405 363Q580 309 700 365Q950 283 1150 360Q1284 297 1500 353V530H0Z" fill="#1c2540" opacity=".68"/>
+          <path d="M0 401Q175 358 350 407Q590 370 746 422Q935 345 1170 395Q1320 355 1500 419V530H0Z" fill="url(#hills)"/>
+          <g stroke="#0c1025" stroke-width="3" fill="url(#castleMain)">
+            <path d="M350 307H1180V462H350Z"/>
+            <path d="M400 257H500V450H400Z"/><path d="M393 261L450 187L508 261Z"/>
+            <path d="M990 248H1098V448H990Z"/><path d="M981 253L1043 172L1107 253Z"/>
+            <path d="M570 240H890V453H570Z"/><path d="M549 241L728 133L910 241Z"/>
+            <path d="M690 185H792V455H690Z"/><path d="M679 194L742 58L805 194Z"/>
+            <path d="M685 194H801V206H685Z" fill="#3c3651"/>
+            <path d="M322 350H379V462H322Z"/><path d="M314 351L350 266L389 351Z"/>
+            <path d="M1164 329H1223V465H1164Z"/><path d="M1155 333L1193 239L1234 333Z"/>
+            <path d="M515 300H566V451H515Z"/><path d="M506 306L540 227L576 306Z"/>
+            <path d="M920 286H969V449H920Z"/><path d="M909 294L944 216L979 294Z"/>
+            <path d="M733 56V23" stroke="#ddbf8c" stroke-width="3"/><path d="M733 23L770 38L733 52Z" fill="#be976d" stroke="none"/>
+            <path d="M449 183V157" stroke="#ddbf8c" stroke-width="2"/><path d="M449 157L475 169L449 181Z" fill="#be976d" stroke="none"/>
+            <path d="M1043 172V141" stroke="#ddbf8c" stroke-width="2"/>
+            <path d="M570 280H889" stroke="#493d51" stroke-width="4"/>
+            <path d="M586 310H874" stroke="#493d51" stroke-width="3"/>
+            <path d="M350 380H1179" stroke="#493d51" stroke-width="4"/>
+            <path d="M650 456V402a77 77 0 0 1 154 0v54" fill="#0b0f23" stroke="#48364a" stroke-width="6"/>
+            <path d="M670 456V410a58 58 0 0 1 116 0v46" fill="#130f22" stroke="#a67e54" stroke-width="3"/>
+          </g>
+          <g fill="#f3c87a">
+            <path d="M428 314v-25a12 12 0 0 1 24 0v25zM462 314v-25a12 12 0 0 1 24 0v25zM1012 308v-30a13 13 0 0 1 26 0v30zM1051 308v-30a13 13 0 0 1 26 0v30z"/>
+            <path d="M715 238v-28a13 13 0 0 1 26 0v28zM753 238v-28a13 13 0 0 1 26 0v28zM721 301v-32a18 18 0 0 1 36 0v32z"/>
+            <path d="M592 344v-22a10 10 0 0 1 20 0v22zM627 344v-22a10 10 0 0 1 20 0v22zM820 344v-22a10 10 0 0 1 20 0v22zM855 344v-22a10 10 0 0 1 20 0v22z"/>
+            <path d="M330 390v-20a9 9 0 0 1 18 0v20zM359 390v-20a9 9 0 0 1 18 0v20zM1175 385v-25a11 11 0 0 1 22 0v25zM529 357v-24a10 10 0 0 1 20 0v24zM935 354v-24a10 10 0 0 1 20 0v24z"/>
+            <path d="M480 396v-24a10 10 0 0 1 20 0v24zM1005 396v-24a10 10 0 0 1 20 0v24zM1102 396v-24a10 10 0 0 1 20 0v24zM574 393v-24a10 10 0 0 1 20 0v24zM860 394v-24a10 10 0 0 1 20 0v24z"/>
+          </g>
+          <g fill="#f0c17b" opacity=".45" filter="url(#windowGlow)"><ellipse cx="737" cy="277" rx="25" ry="39"/><ellipse cx="1045" cy="298" rx="55" ry="31"/><ellipse cx="451" cy="296" rx="52" ry="25"/><ellipse cx="790" cy="371" rx="150" ry="40"/></g>
+          <path d="M0 444Q200 392 390 450Q570 415 760 459Q1020 397 1240 449Q1370 426 1500 450V530H0Z" fill="#0a1024"/>
+          <path d="M0 479Q190 442 390 493Q605 443 794 500Q1075 446 1250 492Q1400 470 1500 483V530H0Z" fill="#090e20"/>
+          <g fill="#0a1124"><path d="M95 474l24-110 20 110ZM147 476l24-146 25 146ZM222 481l20-93 23 93ZM1283 478l28-134 26 134ZM1360 475l32-163 28 163ZM1441 483l20-105 22 105Z"/></g>
+          <g fill="#f4da9d" opacity=".72"><circle cx="440" cy="192" r="2.5"/><circle cx="557" cy="232" r="2.5"/><circle cx="920" cy="246" r="2.5"/><circle cx="1202" cy="263" r="3"/><circle cx="310" cy="320" r="2.5"/></g>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow">7 de noviembre · Día de una bruja extraordinaria</p>
+        <h1 id="heroTitle">¡Feliz cumpleaños,<span>Karen!</span></h1>
+        <p class="hero-lede">Hoy las velas flotan, las estrellas brillan más fuerte y hasta Hogwarts se viste de fiesta. <em>Porque hoy celebramos que tú existes.</em></p>
+        <a class="primary-btn" href="#celebracion">✦ &nbsp; Comenzar mi cumpleaños mágico</a>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">Sigue la magia<i></i></div>
+    </section>
+
+    <section id="celebracion" class="intro-section section" aria-labelledby="introTitle">
+      <div class="section-inner" data-reveal>
+        <p class="section-label">Una celebración hecha solo para ti</p>
+        <h2 class="section-heading" id="introTitle">Hoy eres la magia de esta historia</h2>
+        <div class="intro-card">
+          <p class="script">Mi querida Karen...</p>
+          <p>Dicen que en el mundo existen hechizos capaces de hacer cosas extraordinarias. Pero yo conozco una magia mucho más bonita: la que aparece cuando sonríes, cuando te emocionas y cuando estás a mi lado. Hoy no necesitas una varita para hacer especial este día. <strong>Hoy tú eres la razón de toda la magia.</strong> Y preparé unas sorpresas para celebrar lo feliz que me hace tenerte en mi vida.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pastel" class="cake-section section" aria-labelledby="cakeTitle">
+      <div class="section-inner" data-reveal>
+        <p class="section-label">La primera tradición mágica</p>
+        <h2 class="section-heading" id="cakeTitle">Primero, pide un deseo 🎂</h2>
+        <p class="section-desc">Ni siquiera la magia más poderosa puede adivinar lo que deseas. Cierra los ojos, pide algo muy bonito… y apaga tus velitas.</p>
+        <div class="cake-stage">
+          <div class="cake" aria-label="Pastel de cumpleaños con tres velas interactivas" role="group">
+            <div class="cake-plate"></div><div class="cake-bottom"></div><div class="cake-middle"></div><div class="icing"></div>
+            <div class="candles">
+              <button type="button" class="candle" aria-label="Apagar primera vela"><span class="flame"></span></button>
+              <button type="button" class="candle" aria-label="Apagar segunda vela"><span class="flame"></span></button>
+              <button type="button" class="candle" aria-label="Apagar tercera vela"><span class="flame"></span></button>
+            </div>
+          </div>
+          <div class="cake-action">
+            <p>Toca las velas una por una o apágalas todas con magia.</p>
+            <button type="button" id="blowCandles" class="primary-btn">✨ Apagar mis velitas</button>
+            <div class="wish-result" id="wishResult" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="regalos" class="gifts-section section" aria-labelledby="giftsTitle">
+      <div class="section-inner" data-reveal>
+        <p class="section-label">Directos del departamento de sorpresas</p>
+        <h2 class="section-heading" id="giftsTitle">Tres regalos, solo para ti</h2>
+        <p class="section-desc">Porque alguien tan especial merece algo más que un simple «feliz cumpleaños». Toca cada regalo para descubrir qué hay dentro.</p>
+        <div class="gifts-grid">
+          <article class="gift-card" id="giftCard1">
+            <span class="gift-opened">✓ DESCUBIERTO</span><p class="gift-number">Regalo número I</p>
+            <div class="gift-visual" aria-hidden="true"><div class="gift-halo"></div><div class="gift-box"><div class="ribbon-h"></div><div class="ribbon-v"></div><div class="bow"></div></div></div>
+            <h3>Una carta para mi persona favorita</h3><p class="description">Hay cosas que ni todos los hechizos del mundo podrían expresar tan bien como una carta de amor.</p>
+            <button type="button" class="secondary-btn" data-gift="1">✦ Abrir mi regalo</button>
+          </article>
+          <article class="gift-card" id="giftCard2">
+            <span class="gift-opened">✓ DESCUBIERTO</span><p class="gift-number">Regalo número II</p>
+            <div class="gift-visual" aria-hidden="true"><div class="gift-halo"></div><div class="gift-box"><div class="ribbon-h"></div><div class="ribbon-v"></div><div class="bow"></div></div></div>
+            <h3>El cupón de los deseos</h3><p class="description">Una salida a donde tú quieras, cuando tú quieras, con todo pagado. ¡Sin fecha de vencimiento!</p>
+            <button type="button" class="secondary-btn" data-gift="2">✦ Descubrir mi cupón</button>
+          </article>
+          <article class="gift-card" id="giftCard3">
+            <span class="gift-opened">✓ DESCUBIERTO</span><p class="gift-number">Regalo número III</p>
+            <div class="gift-visual" aria-hidden="true"><div class="gift-halo"></div><div class="gift-box"><div class="ribbon-h"></div><div class="ribbon-v"></div><div class="bow"></div></div></div>
+            <h3>El banquete que tanto querías</h3><p class="description">Una salida al bufete de mariscos que llevas tiempo queriendo conocer. ¡Hoy se hace realidad!</p>
+            <button type="button" class="secondary-btn" data-gift="3">✦ Descubrir mi sorpresa</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="profeta" class="newspaper-section section" aria-labelledby="newsTitle">
+      <div class="section-inner" data-reveal>
+        <p class="section-label">Última hora en el mundo mágico</p>
+        <h2 class="section-heading" id="newsTitle">¡Hasta El Profeta habla de ti!</h2>
+        <div class="newspaper" aria-label="Periódico mágico de cumpleaños para Karen">
+          <div class="paper-content">
+            <div class="paper-topline"><span>Edición extraordinaria</span><span>7 de noviembre</span><span>Una noticia feliz</span></div>
+            <div class="paper-name">EL PROFETA</div>
+            <div class="paper-subline">El periódico de todas las cosas extraordinarias</div>
+            <h3 class="paper-headline">¡HOGWARTS CELEBRA EL CUMPLEAÑOS DE KAREN!</h3>
+            <div class="paper-cols">
+              <div><p><strong>Noticia de último momento.</strong> Fuentes cercanas al castillo confirman que hoy es el cumpleaños de una mujer extraordinaria. Se han observado velas flotando más alto de lo habitual, lechuzas entregando felicitaciones y una misteriosa lluvia de estrellas sobre Hogwarts.</p><div class="paper-stamp"><span>EDICIÓN</span><b>✶</b><span>MUY<br>ESPECIAL</span></div></div>
+              <div><p>Al preguntarle al principal sospechoso de tanta celebración, César declaró: «No conozco un hechizo que se compare con verla feliz». Las autoridades mágicas han decidido no investigar el caso: concluyeron que consentir a Karen es, sencillamente, una excelente idea.</p><p style="margin-top:12px"><strong>Pronóstico para hoy:</strong> felicidad abundante, abrazos inesperados y una probabilidad del 100 % de que alguien te quiera muchísimo.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="deseos" class="wishes-section section" aria-labelledby="wishesTitle">
+      <div class="section-inner" data-reveal>
+        <p class="section-label">Cinco estrellas, cinco deseos</p>
+        <h2 class="section-heading" id="wishesTitle">Lo que le pido al universo para ti</h2>
+        <p class="section-desc">Cada estrella guarda un deseo que tengo para tu nuevo año. Tócalas para descubrirlos.</p>
+        <div class="wishes-grid">
+          <button class="wish-card" type="button" aria-expanded="false"><span class="wish-star">✦</span><span class="wish-name">Felicidad</span><span class="wish-copy">Que siempre encuentres motivos para reír, incluso en los días difíciles.</span></button>
+          <button class="wish-card" type="button" aria-expanded="false"><span class="wish-star">✧</span><span class="wish-name">Sueños</span><span class="wish-copy">Que cumplas cada sueño que guardas en el corazón. Yo estaré para aplaudirte.</span></button>
+          <button class="wish-card" type="button" aria-expanded="false"><span class="wish-star">✦</span><span class="wish-name">Aventuras</span><span class="wish-copy">Que la vida nos regale muchos lugares nuevos, historias y recuerdos juntos.</span></button>
+          <button class="wish-card" type="button" aria-expanded="false"><span class="wish-star">✧</span><span class="wish-name">Paz</span><span class="wish-copy">Que no te falten tranquilidad, salud ni personas que te hagan sentir querida.</span></button>
+          <button class="wish-card" type="button" aria-expanded="false"><span class="wish-star">✦</span><span class="wish-name">Amor</span><span class="wish-copy">Que nunca dudes de lo especial que eres para mí. Te elegiría una y otra vez.</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale" id="final" aria-labelledby="finalTitle">
+      <div class="section-inner" data-reveal>
+        <div class="finale-heart" aria-hidden="true">♥</div>
+        <p class="section-label">Y si pudiera pedir un deseo para mí...</p>
+        <h2 id="finalTitle">Sería seguir celebrando la vida contigo.</h2>
+        <p>Feliz cumpleaños, mi amor. Ojalá este nuevo año de tu vida esté lleno de todo lo bonito que mereces. Gracias por ser mi compañera, mi lugar feliz y mi aventura favorita. No importa cuánta magia exista en Hogwarts: <strong>la parte más mágica de mi vida es compartirla contigo.</strong></p>
+        <p>Con todo mi amor, hoy y siempre,</p>
+        <div class="signature">César ♡</div>
+        <div class="finale-stars" aria-hidden="true">✧ ✦ ✧</div>
+        <button type="button" id="finalConfetti" class="primary-btn" style="margin-top:30px">🎉 ¡Celebrar mi cumpleaños!</button>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">HECHO CON MAGIA Y MUCHO AMOR · PARA KAREN ✦</footer>
+
+  <div class="modal-backdrop" id="giftModal" role="presentation" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+      <button type="button" class="modal-close" id="modalClose" aria-label="Cerrar regalo">×</button>
+      <p class="modal-brow" id="modalBrow">Un regalo especial</p>
+      <h2 class="modal-title" id="modalTitle">Tu sorpresa</h2>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    'use strict';
+    const $ = (q, root=document) => root.querySelector(q);
+    const $$ = (q, root=document) => [...root.querySelectorAll(q)];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const toast = $('#toast');
+    let toastTimeout;
+    const notify = message => { toast.textContent=message; toast.classList.add('show'); clearTimeout(toastTimeout); toastTimeout=setTimeout(()=>toast.classList.remove('show'),3000); };
+
+    // Un cielo de estrellas propio, sin descargar imágenes.
+    let seed=74118;
+    const random=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+    const sky=$('#stars');
+    for(let i=0;i<115;i++){
+      const s=document.createElement('i');s.className='star'+(i%13===0?' big':'');
+      s.style.left=(random()*100).toFixed(2)+'%';s.style.top=(random()*89).toFixed(2)+'%';
+      s.style.setProperty('--speed',(2+random()*4).toFixed(2)+'s');s.style.setProperty('--delay',(-random()*7).toFixed(2)+'s');sky.appendChild(s);
+    }
+
+    // Efectos de celebración.
+    function confetti(count=100){
+      if(reducedMotion){notify('¡Feliz cumpleaños, Karen! ✨');return;}
+      const colors=['#f4d48e','#f7b6bc','#bba8ed','#fff6df','#8fcfc9','#de9765'];
+      for(let i=0;i<count;i++){
+        const p=document.createElement('span');p.className='confetti-piece';
+        p.style.left=(Math.random()*100)+'vw';p.style.backgroundColor=colors[i%colors.length];
+        p.style.borderRadius=i%3===0?'50%':'2px';p.style.opacity=String(.75+Math.random()*.25);
+        p.style.setProperty('--fall',(2+Math.random()*2.8)+'s');
+        p.style.setProperty('--drift',((Math.random()-.5)*300)+'px');
+        p.style.setProperty('--rotation',((Math.random()-.5)*1600)+'deg');
+        p.style.animationDelay=(Math.random()*.65)+'s';document.body.appendChild(p);
+        setTimeout(()=>p.remove(),6200);
+      }
+    }
+    $('#finalConfetti').addEventListener('click',()=>{confetti(140);chime([659,784,1047]);});
+
+    // Velas interactivas.
+    const candles=$$('.candle');let candlesCelebrated=false;
+    function updateCandles(){
+      if(candles.every(c=>c.classList.contains('out')) && !candlesCelebrated){
+        candlesCelebrated=true;
+        $('#wishResult').textContent='✨ ¡Que todos tus deseos se hagan realidad, mi amor! ✨';
+        $('#blowCandles').textContent='🎂 ¡Deseo concedido!';
+        $('#blowCandles').setAttribute('aria-label','Volver a encender las velas');
+        chime([523.25,659.25,783.99,1046.5]);confetti(110);
+      }
+    }
+    candles.forEach((c)=>c.addEventListener('click',()=>{c.classList.add('out');c.disabled=true;c.setAttribute('aria-label','Vela apagada');updateCandles();}));
+    $('#blowCandles').addEventListener('click',()=>{
+      if(candlesCelebrated){candlesCelebrated=false;candles.forEach(c=>{c.classList.remove('out');c.disabled=false;c.setAttribute('aria-label','Apagar vela')});$('#wishResult').textContent='';$('#blowCandles').textContent='✨ Apagar mis velitas';return;}
+      candles.forEach(c=>{c.classList.add('out');c.disabled=true});updateCandles();
+    });
+
+    // Regalos, carta y cupones para guardar como PNG.
+    const modal=$('#giftModal'), modalBody=$('#modalBody');
+    let activeGift=0, lastFocus=null;
+    const letter=`<div class="letter-paper">
+      <h3>Para mi Karen, en tu cumpleaños...</h3>
+      <p>Mi amor:</p>
+      <p>Hoy es uno de mis días favoritos del año, porque celebramos el día en que llegaste al mundo. Y aunque no estuve contigo desde el principio de tu historia, me siento muy afortunado de poder escribir contigo tantos capítulos hermosos.</p>
+      <p>Me encanta tu sonrisa, la manera en que te emocionas con las cosas que amas y hasta esos pequeños momentos que quizá para ti parecen normales, pero que para mí lo significan todo.</p>
+      <p>Si pudiera regalarte algo más grande que el mundo mágico entero, te regalaría la certeza de que eres profundamente amada, de que mereces cosas preciosas y de que siempre voy a querer verte cumplir tus sueños.</p>
+      <p>Gracias por compartir tu vida conmigo, por ser mi compañera y por hacer que hasta los días más sencillos se sientan especiales. Este es solo uno de muchos cumpleaños que espero celebrar a tu lado.</p>
+      <p><strong>Feliz cumpleaños, mi niña hermosa. Te amo muchísimo.</strong></p>
+      <p class="letter-sign">Con todo mi amor, César ♡</p>
+    </div><div class="modal-actions"><button type="button" class="secondary-btn" data-close>♡ Guardar en mi corazón</button></div>`;
+    const coupons={
+      2:{title:'El cupón de los deseos',subtitle:'Una salida, tu elección',text:'Válido por una salida al lugar que tú elijas, con absolutamente todos los gastos pagados. Tú decides a dónde y cuándo; yo me encargo de consentirte.',foot:'Sin restricciones de fecha. Tú eliges el momento perfecto.',file:'cupon-salida-karen.png'},
+      3:{title:'El banquete de tus sueños',subtitle:'Invitación especial',text:'Válido por una salida juntos al bufete de mariscos al que tantas ganas tenías de ir. Esta vez no se queda en un «algún día»: ¡vamos a disfrutarlo!',foot:'Sin fecha de vencimiento. Esta invitación no caduca.',file:'cupon-bufete-mariscos-karen.png'}
+    };
+    function renderCoupon(n){
+      const c=coupons[n];
+      return `<div class="coupon"><p class="coupon-top">✦ Certificado mágico de cumpleaños ✦</p><h3>${c.title}</h3><p><strong>Emitido especialmente para Karen</strong></p><div class="coupon-divider"></div><p>${c.text}</p><div class="coupon-valid">✦ VÁLIDO PARA SIEMPRE ✦</div><p class="coupon-foot">${c.foot}</p><div class="coupon-divider"></div><p class="coupon-sig">Con amor, César ♡</p></div><p class="modal-help">Este cupón no tiene fecha de vencimiento. Guárdalo en tu celular cuando quieras.</p><div class="modal-actions"><button type="button" class="primary-btn" data-download="${n}">↓ Descargar mi cupón</button><button type="button" class="secondary-btn" data-close>Cerrar</button></div>`;
+    }
+    function openGift(n){
+      activeGift=n;lastFocus=document.activeElement;
+      $('#modalBrow').textContent=n===1?'Regalo número I · Para ti':`Regalo número ${n===2?'II':'III'} · Para siempre`;
+      $('#modalTitle').textContent=n===1?'Una carta desde mi corazón':coupons[n].title;
+      modalBody.innerHTML=n===1?letter:renderCoupon(n);
+      modal.classList.add('active');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');
+      $('#giftCard'+n).classList.add('opened');$('#modalClose').focus();chime([523.25,659.25,783.99]);
+      if(n!==1)confetti(25);
+    }
+    function closeGift(){modal.classList.remove('active');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');modalBody.innerHTML='';activeGift=0;if(lastFocus&&typeof lastFocus.focus==='function')lastFocus.focus();}
+    $$('[data-gift]').forEach(b=>b.addEventListener('click',()=>openGift(Number(b.dataset.gift))));
+    $('#modalClose').addEventListener('click',closeGift);
+    modal.addEventListener('click',e=>{if(e.target===modal||e.target.closest('[data-close]'))closeGift();});
+    document.addEventListener('keydown',e=>{
+      if(!modal.classList.contains('active'))return;
+      if(e.key==='Escape'){closeGift();return;}
+      if(e.key==='Tab'){
+        const focusables=$$('button:not([disabled]), a[href]',modal).filter(el=>el.offsetParent!==null);
+        if(!focusables.length)return;
+        const first=focusables[0],last=focusables[focusables.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+      }
+    });
+
+    function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);}
+    function wrapText(ctx,text,maxWidth){
+      const lines=[];let line='';
+      text.split(/\s+/).forEach(word=>{const trial=line?line+' '+word:word;if(ctx.measureText(trial).width>maxWidth&&line){lines.push(line);line=word}else line=trial});
+      if(line)lines.push(line);return lines;
+    }
+    function downloadCoupon(n){
+      const c=coupons[n],canvas=document.createElement('canvas');
+      canvas.width=1200;canvas.height=1500;const ctx=canvas.getContext('2d');
+      if(!ctx){notify('No se pudo crear la imagen del cupón.');return;}
+      const gr=ctx.createLinearGradient(0,0,1200,1500);gr.addColorStop(0,'#fff9e8');gr.addColorStop(.6,'#f3e6cc');gr.addColorStop(1,'#e6d3ad');ctx.fillStyle=gr;ctx.fillRect(0,0,1200,1500);
+      ctx.strokeStyle='#a78755';ctx.lineWidth=10;roundRect(ctx,50,50,1100,1400,26);ctx.stroke();ctx.lineWidth=3;roundRect(ctx,68,68,1064,1364,18);ctx.stroke();
+      ctx.fillStyle='#d9b984';ctx.globalAlpha=.22;ctx.font='280px Georgia';ctx.textAlign='center';ctx.fillText('✦',152,305);ctx.fillText('✦',1030,1275);ctx.globalAlpha=1;
+      ctx.fillStyle='#a47b48';ctx.font='bold 27px Georgia';ctx.textAlign='center';ctx.fillText('✦  CERTIFICADO MÁGICO DE CUMPLEAÑOS  ✦',600,178);
+      ctx.fillStyle='#48344b';ctx.font='bold 59px Georgia';const titles=wrapText(ctx,c.title,980);titles.forEach((l,i)=>ctx.fillText(l,600,322+i*77));
+      ctx.font='32px Georgia';ctx.fillText('Este regalo pertenece a Karen',600,475);
+      ctx.strokeStyle='#bd9f6a';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(150,535);ctx.lineTo(1050,535);ctx.stroke();
+      ctx.fillStyle='#493a43';ctx.font='40px Georgia';const bodyLines=wrapText(ctx,c.text,950);let y=660;bodyLines.forEach(l=>{ctx.fillText(l,600,y);y+=65});
+      const stampY=Math.max(y+74,1000);ctx.strokeStyle='#ad7c4c';ctx.lineWidth=4;roundRect(ctx,265,stampY-58,670,102,12);ctx.stroke();ctx.fillStyle='#8a573f';ctx.font='bold 37px Georgia';ctx.fillText('✦  VÁLIDO PARA SIEMPRE  ✦',600,stampY+7);
+      ctx.fillStyle='#756474';ctx.font='28px Georgia';const footLines=wrapText(ctx,c.foot,880);footLines.forEach((l,i)=>ctx.fillText(l,600,stampY+120+i*43));
+      ctx.strokeStyle='#bc9d6a';ctx.beginPath();ctx.moveTo(150,1290);ctx.lineTo(1050,1290);ctx.stroke();
+      ctx.fillStyle='#855b61';ctx.font='italic 48px Georgia';ctx.fillText('Con mucho amor, César ♡',600,1371);
+      const link=document.createElement('a');link.href=canvas.toDataURL('image/png');link.download=c.file;document.body.appendChild(link);link.click();link.remove();
+      notify('¡Tu cupón se ha preparado para guardar! ✨');
+    }
+    modalBody.addEventListener('click',e=>{const download=e.target.closest('[data-download]');if(download)downloadCoupon(Number(download.dataset.download));});
+
+    // Deseos interactivos.
+    $$('.wish-card').forEach(b=>b.addEventListener('click',()=>{const isOpen=b.classList.toggle('revealed');b.setAttribute('aria-expanded',String(isOpen));if(isOpen)chime([783.99]);}));
+
+    // Una melodía original de campanitas, opcional y sin archivos externos.
+    let audioCtx=null,soundOn=false,musicTimer=null,noteIndex=0;
+    const notes=[659.25,783.99,880,1046.5,880,783.99,659.25,587.33,523.25,659.25,783.99,987.77,783.99,659.25,587.33,523.25];
+    function playTone(freq,duration=.45,volume=.055){
+      if(!audioCtx||audioCtx.state!=='running')return;
+      const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.setValueAtTime(freq,audioCtx.currentTime);
+      gain.gain.setValueAtTime(.0001,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(volume,audioCtx.currentTime+.02);gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);
+      osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+duration+.05);
+    }
+    function chime(freqs){if(!soundOn)return;freqs.forEach((f,i)=>setTimeout(()=>playTone(f,.75,.06),i*130));}
+    $('#soundToggle').addEventListener('click',async()=>{
+      if(!soundOn){
+        const AudioContext=window.AudioContext||window.webkitAudioContext;
+        if(!AudioContext){notify('Este dispositivo no admite sonido interactivo.');return;}
+        try{audioCtx=audioCtx||new AudioContext();await audioCtx.resume();}catch(e){notify('No fue posible activar el sonido.');return;}
+        soundOn=true;noteIndex=0;playTone(notes[0],.7,.04);
+        musicTimer=setInterval(()=>{if(document.hidden||!soundOn)return;playTone(notes[noteIndex%notes.length],.65,.035);noteIndex++;},680);
+      }else{soundOn=false;clearInterval(musicTimer);musicTimer=null;}
+      $('#soundToggle').setAttribute('aria-pressed',String(soundOn));
+      $('#soundToggle').setAttribute('aria-label',soundOn?'Desactivar sonido mágico':'Activar sonido mágico');
+      $('.sound-word',$('#soundToggle')).textContent=soundOn?'Silenciar magia':'Activar magia sonora';
+      $('.speaker',$('#soundToggle')).textContent=soundOn?'♫':'♩';
+    });
+
+    // Animación gradual de secciones.
+    if('IntersectionObserver' in window&&!reducedMotion){const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.10});$$('[data-reveal]').forEach(el=>io.observe(el));}else{$$('[data-reveal]').forEach(el=>el.classList.add('visible'));}
+  })();
+  </script>
+</body>
+</html>
